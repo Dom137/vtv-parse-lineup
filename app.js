@@ -14,8 +14,8 @@ const CHANNEL_ENT_TYPE = 'channel';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
  
 const AIOPS_AUTH_EP = 'https://cpd-cp4aiops.apps.tta.cp4ai.de/icp4d-api/v1/authorize';
-const AIOPS_AUTH_EP_USER = 'dom137';
-const AIOPS_AUTH_EP_PW = 'wbkm1iQj5IS6krf74yrUUGAWywlvfNGJdn3efSB9';
+const AIOPS_AUTH_EP_USER = process.env.AIOPS_AUTH_EP_USER; 
+const AIOPS_AUTH_EP_PW =  process.env.AIOPS_AUTH_EP_PW; 
 let AIOPS_AUTH_TOKEN = '';
 
 const AIOPS_RESOURCES_EP = 'https://aiops-topology-rest-observer-cp4aiops.apps.tta.cp4ai.de/1.0/rest-observer/rest/resources';
