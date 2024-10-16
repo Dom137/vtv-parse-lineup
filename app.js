@@ -4,22 +4,22 @@ const axios = require('axios');
 const DEV_MODE = false;
 
 const s3 = new AWS.S3();
-const BUCKET_NAME = 'epg-check-result';
-const FOLDER_NAME = 'Lineup';
-//const TODAY = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-const TODAY = '2024-10-09';
+const BUCKET_NAME = process.env.AWS_BUCKET_NAME;
+const FOLDER_NAME = process.env.AWS_FOLDER_NAME;
+const TODAY = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+//const TODAY = '2024-10-09';
 const OPCO_ENT_TYPE = 'opco';
 const CHANNEL_ENT_TYPE = 'channel';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
  
-const AIOPS_AUTH_EP = 'https://cpd-cp4aiops.apps.tta.cp4ai.de/icp4d-api/v1/authorize';
+const AIOPS_AUTH_EP = process.env.AIOPS_AUTH_EP; 
 const AIOPS_AUTH_EP_USER = process.env.AIOPS_AUTH_EP_USER; 
 const AIOPS_AUTH_EP_PW =  process.env.AIOPS_AUTH_EP_PW; 
 let AIOPS_AUTH_TOKEN = '';
 
-const AIOPS_RESOURCES_EP = 'https://aiops-topology-rest-observer-cp4aiops.apps.tta.cp4ai.de/1.0/rest-observer/rest/resources';
-const AIOPS_REFERENCES_EP = 'https://aiops-topology-rest-observer-cp4aiops.apps.tta.cp4ai.de/1.0/rest-observer/rest/references';
+const AIOPS_RESOURCES_EP = process.env.AIOPS_RESOURCES_EP; 
+const AIOPS_REFERENCES_EP = process.env.AIOPS_REFERENCES_EP; 
 
 // function to get the Auth token
 async function getAuthToken() {
